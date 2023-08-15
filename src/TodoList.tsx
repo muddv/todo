@@ -33,12 +33,14 @@ export function TodoList() {
     return <div>Loading...</div>;
   } else if (todos.error && !todos.data[0]) {
     return <div>{todos.error}</div>;
-  } else
-    return (
+  } else if (todos.data[0]) return (
       <ul>
         {todos.data.map((t, i) => (
           <Todo todo={t as TodoType} tabIndex={i} key={t.id} />
         ))}
       </ul>
     );
+  else return (
+    <div>No current TODOs, you can add new ones</div>
+  )
 }

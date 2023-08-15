@@ -7,7 +7,6 @@ export type Todo = {
   id: number,
   title: string,
   completed: boolean
-  error?: string
 }
 
 type FetchRes = {
