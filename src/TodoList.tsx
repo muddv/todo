@@ -28,22 +28,17 @@ export function TodoList() {
   useEffect(() => {
     handleFetch();
   }, []);
+
   if (loading) {
+    return <div>Loading...</div>;
+  } else if (todos.error && !todos.data[0]) {
+    return <div>{todos.error}</div>;
+  } else
     return (
-    <div>Loading...</div>
-    )
-  }
-  else if (todos.error && !todos.data[0]) {
-    return (
-      <div>{todos.error}</div>
-    )
-  }
-  else 
-  return (
-        <ul>
-          {todos.data.map((t, i) => (
-            <Todo todo={t as TodoType} tabIndex={i} key={t.id} />
-          ))}
-        </ul>
-  );
+      <ul>
+        {todos.data.map((t, i) => (
+          <Todo todo={t as TodoType} tabIndex={i} key={t.id} />
+        ))}
+      </ul>
+    );
 }
