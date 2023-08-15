@@ -1,5 +1,10 @@
 # TODO APP
 
+# TODO
+fix typescript errors
+show new at the top of the list???
+show "no todos" thing if no todos fit the filter option
+
 
 ## Фичи:
  - возможность добавить новую тудушку

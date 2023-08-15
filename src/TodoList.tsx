@@ -1,14 +1,16 @@
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { useEffect, useState } from "react";
 
 import type { Todo as TodoType } from "../stores/todos";
 import { todosAtom } from "../stores/todos";
 import { getTodos } from "../lib/fetchTodos";
 import { Todo } from "./Todo";
+import { filterAtom } from "../stores/filter";
 
 export function TodoList() {
   const [loading, setLoading] = useState(false);
   const [todos, setTodos] = useAtom(todosAtom);
+  const filterOption = useAtomValue(filterAtom)
   async function handleFetch() {
     setLoading(true);
     let data = await getTodos();
@@ -29,15 +31,23 @@ export function TodoList() {
     handleFetch();
   }, []);
 
+  function filterTodos(todo: TodoType) {
+    if (filterOption === "All") return true
+    else if (filterOption === "Completed" && !todo.completed) return false
+    else if (filterOption === "Active" && todo.completed) return false
+    return true
+  }
+
   if (loading) {
     return <div>Loading...</div>;
   } else if (todos.error && !todos.data[0]) {
     return <div>{todos.error}</div>;
   } else if (todos.data[0]) return (
       <ul>
-        {todos.data.map((t, i) => (
-          <Todo todo={t as TodoType} tabIndex={i} key={t.id} />
-        ))}
+        {todos.data.filter(t => 
+          filterTodos(t)
+        ).map((t, i) => (<Todo todo={t} tabIndex={i} key={t.id} />))
+      }
       </ul>
     );
   else return (
