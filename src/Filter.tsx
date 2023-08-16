@@ -1,12 +1,14 @@
+import type { FormEvent } from "react";
 import { useSetAtom } from "jotai";
 
 import { filterAtom } from "../stores/filter";
+import type { FilterOptions } from "../stores/filter";
 
 export function Filter() {
   const setFilter = useSetAtom(filterAtom);
-  function handleFilterChange(e) {
-    console.log(e.target.value);
-    setFilter(e.target.value);
+  function handleFilterChange(e: FormEvent<HTMLFieldSetElement>) {
+    e.target &&
+      setFilter((e.target as HTMLInputElement).value as FilterOptions);
   }
   return (
     <div>

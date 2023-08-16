@@ -1,7 +1,5 @@
 import { atom } from 'jotai'
 
-import { getTodos } from '../lib/fetchTodos'
-
 export type Todo = {
   userId: number,
   id: number,

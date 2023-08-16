@@ -5,7 +5,7 @@ import { todosAtom } from "../stores/todos";
 export function Controls() {
   const setTodos = useSetAtom(todosAtom);
   function handleNew() {
-    const dialog = document.querySelector(".addNew");
+    const dialog: HTMLDialogElement = document.querySelector(".addNew")!;
     dialog.showModal();
     console.log(dialog);
   }

@@ -1,6 +1,6 @@
 import { atom } from 'jotai'
 
-enum FilterOptions {
+export enum FilterOptions {
   All = "All",
   Completed = "Completed",
   Active = "Active"

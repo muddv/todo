@@ -1,6 +1,6 @@
 import { useAtom } from "jotai";
 import React, { useState, FormEvent, ChangeEvent } from "react";
-import { Todo, todosAtom } from "../stores/todos";
+import { todosAtom } from "../stores/todos";
 
 const initialState = {
   title: "",
@@ -12,7 +12,7 @@ export function AddNewTodo() {
   const [newTodo, setNewTodo] = useState(initialState);
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    let todo = {
+    const todo = {
       userId: 1,
       id: todos.data.length + 1,
       title: newTodo.title,
@@ -25,15 +25,16 @@ export function AddNewTodo() {
     closeModal();
   }
   function closeModal() {
-    document.querySelector(".addNew").close();
+    const modal: HTMLDialogElement = document.querySelector(".addNew")!;
+    modal.close();
   }
   function handleTitleChange(e: ChangeEvent<HTMLInputElement>) {
-    let todo = newTodo;
+    const todo = newTodo;
     todo.title = e.target.value;
     setNewTodo(todo);
   }
   function handleCompletedChange(e: React.ChangeEvent<HTMLInputElement>) {
-    let todo = newTodo;
+    const todo = newTodo;
     todo.completed = e.target.checked;
     setNewTodo(todo);
   }

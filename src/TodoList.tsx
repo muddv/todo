@@ -13,13 +13,13 @@ export function TodoList() {
   const filterOption = useAtomValue(filterAtom);
   async function handleFetch() {
     setLoading(true);
-    let data = await getTodos();
+    const data = await getTodos();
     if (typeof data === "string") {
       setTodos({ data: [], error: data });
       setLoading(false);
       return;
     } else if (data[0]) {
-      let todoData = data[0] as TodoType;
+      const todoData = data[0] as TodoType;
       if (todoData.title) {
         setTodos({ data: data as TodoType[], error: "" });
         setLoading(false);
@@ -29,6 +29,7 @@ export function TodoList() {
   }
   useEffect(() => {
     handleFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function filterTodos(todo: TodoType) {

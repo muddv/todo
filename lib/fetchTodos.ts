@@ -1,6 +1,6 @@
 import type { Todo } from '../stores/todos'
 
-export async function getTodos(): Promise<Todo[] | String> {
+export async function getTodos(): Promise<Todo[] | string> {
   let data
   const errorText = "Unable to get TODOs, try again or add your own"
   const url = "https://jsonplaceholder.typicode.com/users/1/todos"

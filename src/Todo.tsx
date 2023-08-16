@@ -15,7 +15,7 @@ export function Todo(props: TodoProps) {
     props.todo.completed = !completed;
   }
   function handleDelete() {
-    let data = todos.data;
+    const data = todos.data;
     data.splice(props.tabIndex, 1);
     setTodos({ data: data });
   }
