@@ -7,7 +7,6 @@ export function Controls() {
   function handleNew() {
     const dialog: HTMLDialogElement = document.querySelector(".addNew")!;
     dialog.showModal();
-    console.log(dialog);
   }
   function deleteAll() {
     setTodos({ data: [], error: "" });

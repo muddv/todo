@@ -2,12 +2,9 @@ import { useAtom } from "jotai";
 import { useState, FormEvent, ChangeEvent } from "react";
 import { todosAtom } from "../stores/todos";
 
-
-
 export function AddNewTodo() {
-  
   const [todos, setTodos] = useAtom(todosAtom);
-  const [newTodo, setNewTodo] = useState({title: "", completed: false});
+  const [newTodo, setNewTodo] = useState({ title: "", completed: false });
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const todo = {
@@ -19,7 +16,7 @@ export function AddNewTodo() {
     todos.data.push(todo);
     setTodos({ data: todos.data });
     e.target && (e.target as HTMLFormElement).reset();
-    setNewTodo({title: "", completed: false});
+    setNewTodo({ title: "", completed: false });
     closeModal();
   }
   function closeModal() {
