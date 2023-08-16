@@ -51,9 +51,6 @@ devDependencies:
   eslint-plugin-react-refresh:
     specifier: ^0.4.3
     version: 0.4.3(eslint@8.47.0)
-  extend-expect:
-    specifier: link:@testing-library/jest-dom/extend-expect
-    version: link:@testing-library/jest-dom/extend-expect
   jsdom:
     specifier: ^22.1.0
     version: 22.1.0
