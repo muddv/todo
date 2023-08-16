@@ -1,15 +1,13 @@
 import { useAtom } from "jotai";
-import React, { useState, FormEvent, ChangeEvent } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 import { todosAtom } from "../stores/todos";
 
-const initialState = {
-  title: "",
-  completed: false,
-};
+
 
 export function AddNewTodo() {
+  
   const [todos, setTodos] = useAtom(todosAtom);
-  const [newTodo, setNewTodo] = useState(initialState);
+  const [newTodo, setNewTodo] = useState({title: "", completed: false});
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const todo = {
@@ -19,9 +17,9 @@ export function AddNewTodo() {
       completed: newTodo.completed,
     };
     todos.data.push(todo);
-    setNewTodo(initialState);
     setTodos({ data: todos.data });
     e.target && (e.target as HTMLFormElement).reset();
+    setNewTodo({title: "", completed: false});
     closeModal();
   }
   function closeModal() {
@@ -33,9 +31,9 @@ export function AddNewTodo() {
     todo.title = e.target.value;
     setNewTodo(todo);
   }
-  function handleCompletedChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleCompletedChange() {
     const todo = newTodo;
-    todo.completed = e.target.checked;
+    todo.completed = !newTodo.completed;
     setNewTodo(todo);
   }
   return (
@@ -60,7 +58,7 @@ export function AddNewTodo() {
         ></input>
         <label className="mb-4 flex w-full justify-between">
           Add as completed
-          <input type="checkbox" onChange={handleCompletedChange}></input>
+          <input type="checkbox" onClick={handleCompletedChange}></input>
         </label>
         <button
           className="rounded border border-blue-700 bg-blue-600 px-4 py-2 font-bold text-white hover:bg-blue-700"
