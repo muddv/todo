@@ -6,7 +6,7 @@ export function Controls() {
   const [todos, setTodos] = useAtom(todosAtom);
   function handleNew() {
     const dialog: HTMLDialogElement = document.querySelector(".addNew")!;
-    dialog.showModal();
+    dialog.showModal && dialog.showModal();
   }
   function deleteAll() {
     setTodos({ data: [], error: "" });

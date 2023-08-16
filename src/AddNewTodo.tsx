@@ -21,7 +21,7 @@ export function AddNewTodo() {
   }
   function closeModal() {
     const modal: HTMLDialogElement = document.querySelector(".addNew")!;
-    modal.close();
+    modal.close && modal.close();
   }
   function handleTitleChange(e: ChangeEvent<HTMLInputElement>) {
     const todo = newTodo;

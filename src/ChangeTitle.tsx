@@ -30,7 +30,7 @@ export function ChangeTitle(props: ChangeTitleProps) {
     const modal: HTMLDialogElement = document.querySelector(
       `#changeTitle${props.id}`,
     )!;
-    modal.close();
+    modal.close && modal.close();
   }
   function handleTitleChange(e: ChangeEvent<HTMLInputElement>) {
     setNewTitle(e.target.value);
