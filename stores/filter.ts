@@ -2,7 +2,7 @@ import { atom } from 'jotai'
 
 enum FilterOptions {
   All = "All",
-  Completed = "Complted",
+  Completed = "Completed",
   Active = "Active"
 }
 

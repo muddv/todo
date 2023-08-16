@@ -20,18 +20,27 @@ export function Todo(props: TodoProps) {
     setTodos({ data: data });
   }
   return (
-    <li className="m-5 flex flex-col border-2 border-black p-2">
-      <h2 className={`${completed && "line-through"}`}>{props.todo.title}</h2>
-      <label>
+    <li
+      className={`m-5 flex max-w-[400px] flex-col border-2 border-black p-2 md:w-[320px] md:max-w-[400px] ${
+        completed && "bg-gray-50"
+      }`}
+    >
+      <h2 className={`${completed && "line-through"} `}>{props.todo.title}</h2>
+      <label className="w-fit">
         Done
         <input
-          className="m-2"
+          className="m-5 h-5 w-5"
           type="checkbox"
           checked={completed}
           onChange={handleCheck}
         ></input>
       </label>
-      <button onClick={handleDelete}>delete task</button>
+      <button
+        className="w-fit rounded border border-red-700 px-4 py-2 font-bold text-red-600 hover:bg-red-700 hover:text-white"
+        onClick={handleDelete}
+      >
+        delete task
+      </button>
     </li>
   );
 }
